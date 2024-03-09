@@ -10,7 +10,6 @@ export default{
     data: () =>({
         workspaceName: '',
         board: {
-            name : 'Apples',
             columns: []
         }, 
     }),
@@ -47,11 +46,11 @@ createCard(column){
 <section>
     <h2>{{ board.name }}</h2>
     <button @click="createColumn">Create Columns </button>
-<div class="column-grid">
-    <br />
+    <br />    <br />
+    <div class="column-grid">
     <section class="board-column" v-for="column in board.columns"> 
        
-        <input type="text" v-model="column.newItemName" style="box-sizing: border-box; margin: 2%; width: 95%;"
+        <input type="text" v-model="column.newItemName" style="box-sizing: border-box; margin: 2%; width: 95%"
         @keyup.enter="createCard(column)"
         />
        
@@ -70,8 +69,13 @@ createCard(column){
 </template>
 
 <style>
+li {
+  white-space: normal; 
+  word-wrap: break-word; 
+}
+
 .column-grid {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(v-bind(board.columns.length),
      1fr);
 }
@@ -80,7 +84,10 @@ createCard(column){
     border: 1px solid blue;
     border-radius: 2px;
     height: 80vh;
-    width: 100px;
     margin-right: 1rem;
+    padding-right: 5px;
+}
+.board-column input{
+    width: 100%;
 }
 </style>
