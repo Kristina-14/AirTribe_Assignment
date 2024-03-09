@@ -89,5 +89,7 @@ li {
 }
 .board-column input{
     width: 100%;
+    white-space: normal; 
+  word-wrap: break-word; 
 }
 </style>

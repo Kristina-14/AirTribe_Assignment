@@ -6,7 +6,8 @@ export default {}
 <template>
     <div>
         <nav>
-            <nuxt-link to="/">Home</nuxt-link>
+            <button class="btn btn-primary" type="button"><nuxt-link to="/">Home</nuxt-link></button>
+            <hr/>
         </nav>
         <slot />
     </div>
