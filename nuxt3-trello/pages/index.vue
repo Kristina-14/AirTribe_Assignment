@@ -23,7 +23,7 @@ const createWorkspace = () => {
     <input style="width: auto;" placeholder="Workspace Name" class="form-control me-2" type = "text" v-model="newWorkspaceName"
     @keyup.enter="createWorkspace"/> 
     &nbsp;&nbsp;
-    <button class="btn btn-success btn-sm" @click="createWorkspace">Create a Workspace</button>
+    <button class="btn btn-success" @click="createWorkspace">Create a Workspace</button>
     </div><br/>
     <ul class="workspace-list">
         <li v-for="workspace in workspaceList" :key="workspace.id"
@@ -49,5 +49,8 @@ const createWorkspace = () => {
 .workspace-list{
     margin-left: 0;
     padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column: 10px;
 }
 </style>

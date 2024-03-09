@@ -45,7 +45,7 @@ createCard(column){
 <h2>{{ workspaceName }} WorkSpace (#{{ $route.params.id }})</h2>
 <section>
     <h2>{{ board.name }}</h2>
-    <button class="btn btn-primary" @click="createColumn">Create Columns </button>
+    <button class="btn btn-success" @click="createColumn">Create Columns </button>
     <br />    <br />
     <div class="column-grid">
     <section class="board-column" v-for="column in board.columns"> 
@@ -55,10 +55,10 @@ createCard(column){
         @keyup.enter="createCard(column)"
         />
        
-        <button class="btn btn-primary" @click="createCard(column)" style="margin: 2%; width: 95%;">
+        <button class="btn btn-success" @click="createCard(column)" style="margin: 2%; width: 95%;">
             Create Card</button>
         <ul type="circle">
-            <li v-for="item in column.items" :key="item.id">
+            <li v-for="item in column.items" :key="item.id" style="margin-left: -1.5rem;">
             {{ item.name }}</li>
         </ul>
     </section>
@@ -72,8 +72,16 @@ createCard(column){
 
 <style>
 li {
-  white-space: normal; 
-  word-wrap: break-word; 
+white-space: normal; 
+word-wrap: break-word; 
+border: 1px solid green;
+border-radius: 5px;
+list-style: none;
+padding: 5px;
+margin-top: 5px;
+margin-bottom: 7px;
+margin-right: 5px;
+background-color: #f0f0f0;
 }
 
 .column-grid {
@@ -82,12 +90,12 @@ li {
      1fr);
 }
 .board-column {
-    background-color: powderblue;
-    border: 1px solid blue;
+    background-color: rgb(148, 190, 142);
+    border: 1px solid green;
     border-radius: 2px;
     height: 80vh;
     margin-right: 1rem;
-    padding-right: 5px;
+    padding: 5px;
 }
 .board-column input{
     width: 100%;

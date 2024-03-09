@@ -5,31 +5,50 @@ export default {}
 
 <template>
     <div>
-        <nav style="display: flex;">
-            <button style="margin-left: 1rem; margin-top: 10px;" class="btn btn-outline-success btn-sm" type="button">
-                <nuxt-link to="/" style="color: black; text-decoration: none; font-weight: 600;">Home</nuxt-link></button>
+        <header class="main-header">
+            <nav class="main-nav" style="display: flex;">
 
-                <button style="margin-left: 1rem; margin-top: 10px;" class="btn btn-outline-success btn-sm" type="button">
-                <nuxt-link to="/" style="color: black; text-decoration: none; font-weight: 600;">Pages</nuxt-link></button>
+                                <button class="nav-btn btn btn-outline-success btn-sm" type="button">
+                <nuxt-link to="/" class="nav-style">Home</nuxt-link></button>
+
+                <button class="nav-btn btn btn-outline-success btn-sm" type="button">
+                <nuxt-link to="/" class="nav-style">Pages</nuxt-link></button>
                 
-                <button style="margin-left: 1rem; margin-top: 10px;" class="btn btn-outline-success btn-sm" type="button">
-                <nuxt-link to="/" style="color: black; text-decoration: none; font-weight: 600;">About</nuxt-link></button>
+                <button class="nav-btn btn btn-outline-success btn-sm" type="button">
+                <nuxt-link to="/" class="nav-style">About</nuxt-link></button>
                 
-                <button style="margin-left: 1rem; margin-top: 10px;" class="btn btn-outline-success btn-sm" type="button">
-                <nuxt-link to="/" style="color: black; text-decoration: none; font-weight: 600;">Contact</nuxt-link></button>
+                <button class="nav-btn btn btn-outline-success btn-sm" type="button">
+                <nuxt-link to="/" class="nav-style">Contact</nuxt-link></button>
                 
                 <div class="container-fluid">
-    <form class="d-flex" style="margin-left: 1rem; margin-top: 10px;">
+    <form class="nav-btn d-flex">
       <input style="width: auto;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button style="color: black;" class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
 </nav>
-                <hr/>
+        </header>
 
+<br/>
         <slot />
     </div>
     
 </template>
 
-<style></style>
+<style>
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family:'Arial,  sans-serif';
+}
+.nav-style{
+    color: black; text-decoration: none; font-weight: 500; font-size: medium;
+}
+.nav-btn{
+    margin-left: 1rem; margin-top: 10px;
+}
+.main-header{
+    background-color: #d5fadb;
+    padding:15px;
+}
+</style>
