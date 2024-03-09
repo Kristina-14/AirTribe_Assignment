@@ -41,20 +41,22 @@ createCard(column){
 }
 </script>
 
-<template><div>
-<h1>{{ workspaceName }} WorkSpace (#{{ $route.params.id }})</h1>
+<template><div style="margin-left: 1rem;">
+<h2>{{ workspaceName }} WorkSpace (#{{ $route.params.id }})</h2>
 <section>
     <h2>{{ board.name }}</h2>
-    <button @click="createColumn">Create Columns </button>
+    <button class="btn btn-primary" @click="createColumn">Create Columns </button>
     <br />    <br />
     <div class="column-grid">
     <section class="board-column" v-for="column in board.columns"> 
        
-        <input type="text" v-model="column.newItemName" style="box-sizing: border-box; margin: 2%; width: 95%"
+        <input class="form-control me-2" placeholder="task" 
+        type="text" v-model="column.newItemName" style="box-sizing: border-box; margin: 2%; width: 95%"
         @keyup.enter="createCard(column)"
         />
        
-        <button @click="createCard(column)" style="margin: 2%; width: 95%; background-color: lightgrey; border-radius: 2px;">Create Card</button>
+        <button class="btn btn-primary" @click="createCard(column)" style="margin: 2%; width: 95%;">
+            Create Card</button>
         <ul type="circle">
             <li v-for="item in column.items" :key="item.id">
             {{ item.name }}</li>

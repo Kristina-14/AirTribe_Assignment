@@ -15,25 +15,30 @@ const createWorkspace = () => {
 }
 </script>
 
-<template><div>
-    <h1>Home Page</h1>
-    <h2>Reacently Viewed</h2>
-    <h2>Workspaces</h2>
-    <input type = "text" v-model="newWorkspaceName"
+<template><div style="margin-left: 1rem;">
+    <h2 >Home Page</h2>
+
+    <h4>Workspaces</h4>
+    <br/><div style="display: flex;">
+    <input style="width: auto;" placeholder="Workspace Name" class="form-control me-2" type = "text" v-model="newWorkspaceName"
     @keyup.enter="createWorkspace"/> 
     &nbsp;&nbsp;
-    <button @click="createWorkspace">Create a Workspace</button>
+    <button class="btn btn-success btn-sm" @click="createWorkspace">Create a Workspace</button>
+    </div><br/>
     <ul class="workspace-list">
         <li v-for="workspace in workspaceList" :key="workspace.id"
         class="workspace-card">
-        <nuxt-link :to="`/workspace/${workspace.id}`">{{ workspace.id }}: {{ workspace.name }}</nuxt-link>
+        <nuxt-link :to="`/workspace/${workspace.id}`" style="text-decoration: none; color: white; font-weight: 400;">{{ workspace.id }}: {{ workspace.name }}</nuxt-link>
         </li>
-    </ul></div>
+    </ul>
+    
+    </div>
 </template>
 
 <style>
 .workspace-card{
-    background-color: rgb(203, 252, 180);
+    background-color: rgba(1, 81, 32, 0.747);
+    width: 95%;
     display: block;
     border: 2px solid green;
     border-radius: 5px;
