@@ -11,7 +11,28 @@ export default{
         newColumnName: '',
         workspaceName: '',
         board: {
-            columns: []
+            columns: [
+                {
+                columnName: 'Winter',
+                newItemName: '',
+                items: [
+                {
+        id: 123,
+        name: 'Rocket Punch'
+    }
+                ]
+                },
+                {
+                columnName: 'Summer',
+                newItemName: '',
+                items: []
+                }, 
+                {
+                columnName: 'Autumn',
+                newItemName: '',
+                items: []
+                }
+            ]
         }, 
     }),
     methods:
@@ -76,8 +97,13 @@ createCard(column){
         <button class="btn btn-success" @click="createCard(column)" style="margin: 2%; width: 95%;">
             Create Card</button>
         <ul type="circle">
-            <li v-for="item in column.items" :key="item.id" style="margin-left: -1.5rem;">
-            {{ item.name }}</li>
+            <li v-for="item in column.items" 
+            :key="item.id" 
+            style="margin-left: -1.5rem;">
+          <BaseCard :data="item"
+          :parentColumn="column.columnName"
+          :migrateList="board.columns"/>
+        </li>
         </ul>
     </section>
 
@@ -88,7 +114,7 @@ createCard(column){
 </div>
 </template>
 
-<style>
+<style scoped>
 li {
 white-space: normal; 
 word-wrap: break-word; 
