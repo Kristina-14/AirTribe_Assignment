@@ -56,6 +56,20 @@ createCard(column){
 
     column.newItemName = '';
     }
+    },
+    migrateItem({ cardId, targetColumn, originalColumn}){
+        // console.log(payload)
+        
+        //Step1: Move item to new list
+        this.board.columns.find(column => column.columnName === targetColumn).items.push(
+            this.board.columns.find(column => column.columnName === originalColumn).items.
+            find(item => item.id === cardId)
+        )
+        //Step2: Delete item from old list
+        const parentColumn = this.board.columns.find(
+            column => column.columnName === originalColumn
+        )
+        parentColumn.items = parentColumn.items.filter(item => item.id !== cardId)
     }
     },
     mounted(){
@@ -102,7 +116,8 @@ createCard(column){
             style="margin-left: -1.5rem;">
           <BaseCard :data="item"
           :parentColumn="column.columnName"
-          :migrateList="board.columns"/>
+          :migrateList="board.columns"
+          @migrate-item="migrateItem"/>
         </li>
         </ul>
     </section>
