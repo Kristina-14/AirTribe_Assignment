@@ -12,15 +12,26 @@ export default{
         board: {
             name : 'Apples',
             columns: []
-        }
+        }, 
     }),
     methods:
     {
         createColumn(){
             this.board.columns.push({
+                newItemName: '',
                 items: []
             })
-        }
+        },
+createCard(column){
+    if(column.newItemName){
+        column.items.push({
+        id: 123,
+        name: column.newItemName
+    })
+
+    column.newItemName = '';
+    }
+    }
     },
     mounted(){
         this.workspaceName = this.workspaceList.find(
@@ -37,7 +48,19 @@ export default{
     <h2>{{ board.name }}</h2>
     <button @click="createColumn">Create Columns </button>
 <div class="column-grid">
-    <ul class="board-column" v-for="column in board.columns"> </ul>
+    <br />
+    <section class="board-column" v-for="column in board.columns"> 
+       
+        <input type="text" v-model="column.newItemName" style="box-sizing: border-box; margin: 2%; width: 95%;"
+        @keyup.enter="createCard(column)"
+        />
+       
+        <button @click="createCard(column)" style="margin: 2%; width: 95%; background-color: lightgrey; border-radius: 2px;">Create Card</button>
+        <ul type="circle">
+            <li v-for="item in column.items" :key="item.id">
+            {{ item.name }}</li>
+        </ul>
+    </section>
 
 </div>
 
