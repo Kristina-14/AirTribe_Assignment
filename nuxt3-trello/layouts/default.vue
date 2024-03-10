@@ -8,7 +8,7 @@ export default {}
         <header class="main-header">
             <nav class="main-nav" style="display: flex;">
 
-                                <button class="nav-btn btn btn-outline-success btn-sm" type="button">
+                <button class="nav-btn btn btn-outline-success btn-sm" type="button">
                 <nuxt-link to="/" class="nav-style">Home</nuxt-link></button>
 
                 <button class="nav-btn btn btn-outline-success btn-sm" type="button">
