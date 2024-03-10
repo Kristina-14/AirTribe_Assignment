@@ -1,11 +1,15 @@
 <script>
 import { workspaceList } from '../../store/global.js'
+import { UseDraggable } from '@vueuse/components'
 
 export default{
     setup(){
         return{
             workspaceList
         }
+    },
+    components:{
+        UseDraggable
     },
     data: () =>({
         newColumnName: '',
@@ -72,13 +76,23 @@ createCard(column){
         type="text" v-model="column.newItemName" style="box-sizing: border-box; margin: 2%; width: 95%"
         @keyup.enter="createCard(column)"
         />
-       
+  
         <button class="btn btn-success" @click="createCard(column)" style="margin: 2%; width: 95%;">
             Create Card</button>
-        <ul type="circle">
-            <li v-for="item in column.items" :key="item.id" style="margin-left: -1.5rem;">
-            {{ item.name }}</li>
+        <ul>    
+            <li v-for="item in column.items" 
+            :key="item.id" 
+            style="list-style: none; margin-left: -1.5rem;">
+            <UseDraggable 
+            class="drag"
+            v-slot="{ x, y }" 
+            :initial-value="{ x:x, y:y}"
+            style="position: fixed;">
+            {{ item.name }}</UseDraggable>
+        </li>
         </ul>
+
+
     </section>
 
 </div>
@@ -89,7 +103,7 @@ createCard(column){
 </template>
 
 <style>
-li {
+.drag {
 white-space: normal; 
 word-wrap: break-word; 
 border: 1px solid green;
